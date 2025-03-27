@@ -1,0 +1,71 @@
+winget --info
+
+Winget Directories
+-------------------------------------------------------------------------------------------------------------------------------
+Logs                               %LOCALAPPDATA%\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir
+User Settings                      %LOCALAPPDATA%\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\settings.json
+Portable Links Directory (User)    %LOCALAPPDATA%\Microsoft\WinGet\Links
+Portable Links Directory (Machine) C:\Program Files\WinGet\Links
+Portable Package Root (User)       %LOCALAPPDATA%\Microsoft\WinGet\Packages
+Portable Package Root              C:\Program Files\WinGet\Packages
+Portable Package Root (x86)        C:\Program Files (x86)\WinGet\Packages
+Installer Downloads                %USERPROFILE%\Downloads
+
+Links
+---------------------------------------------------------------------------
+Privacy Statement   https://aka.ms/winget-privacy
+License Agreement   https://aka.ms/winget-license
+Third Party Notices https://aka.ms/winget-3rdPartyNotice
+Homepage            https://aka.ms/winget
+Windows Store Terms https://www.microsoft.com/en-us/storedocs/terms-of-sale
+
+Admin Setting                             State
+--------------------------------------------------
+LocalManifestFiles                        Disabled
+BypassCertificatePinningForMicrosoftStore Disabled
+InstallerHashOverride                     Disabled
+LocalArchiveMalwareScanOverride           Disabled
+ProxyCommandLineOptions                   Disabled
+DefaultProxy                              Disabled
+
+
+
+winget source reset --force
+winget source update --verbose-logs
+
+C:\Windows\System32>winget source list
+Name    Argument                                      Explicit
+--------------------------------------------------------------
+msstore https://storeedgefd.dsx.mp.microsoft.com/v9.0 false
+winget  https://cdn.winget.microsoft.com/cache        false
+
+C:\Windows\System32>
+
+
+
+
+
+winget source remove winget
+
+C:\Windows\System32>winget source remove winget
+Removing source: winget...
+An unexpected error occurred while executing the command:
+Operation failed: Windows cannot remove Microsoft.Winget.Source_2024.1215.1747.29_neutral__8wekyb3d8bbwe because the current user does not have that package installed. Use Get-AppxPackage to see the list of packages installed.
+0x80073cf1 : Package was not found.
+
+
+
+winget source add -n winget https://winget.azureedge.net/cache
+winget source update
+
+
+
+################### SOLUTION:
+
+1. add admin
+2. https://winget.azureedge.net/cache/source.msix
+3. Add-AppxPackage source.msix
+
+
+
+

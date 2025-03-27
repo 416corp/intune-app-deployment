@@ -1,0 +1,6 @@
+*.intunewin
+*.exe
+*.ms*
+*.cab
+*.ini
+*.nupkg
